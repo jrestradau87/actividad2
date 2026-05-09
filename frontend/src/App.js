@@ -30,7 +30,7 @@ function App() {
   const cargarUsuarios = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/usuarios`);
+      const response = await fetch(`/api/usuarios`);
       const data = await response.json();
       setUsuarios(data);
     } catch (error) {
@@ -42,7 +42,7 @@ function App() {
   const crearUsuario = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL}/api/usuarios`, {
+      const response = await fetch(`/api/usuarios`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(nuevoUsuario)
@@ -60,7 +60,7 @@ function App() {
   const seleccionarUsuario = async (usuario) => {
     setSelectedUser(usuario);
     try {
-      const response = await fetch(`${API_URL}/api/usuarios/${usuario.id}/transacciones`);
+      const response = await fetch(`/api/usuarios/${usuario.id}/transacciones`);
       const data = await response.json();
       setTransacciones(data);
     } catch (error) {
@@ -75,7 +75,7 @@ function App() {
       return;
     }
     try {
-      const response = await fetch(`${API_URL}/api/transacciones`, {
+      const response = await fetch(`/api/transacciones`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
